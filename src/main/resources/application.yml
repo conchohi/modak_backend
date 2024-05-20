@@ -1,0 +1,17 @@
+spring:
+    application:
+        name: backend
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 30MB
+            enabled: true
+    profiles:
+        include:
+            - db
+            - secret
+            - log
+
+# 서버 설정
+server:
+    port: 4040
