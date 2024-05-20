@@ -4,6 +4,7 @@ import com.modak.backend.dtointerface.CampInterface;
 import com.modak.backend.entity.CampEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,11 +25,18 @@ public interface CampRepository extends JpaRepository<CampEntity,Long> {
     public List<CampInterface> selectBestFourByBestRegion(@Param("region") String region);
 
 
-    @Query("select c from CampEntity c join c.campTypes t where t.type like CONCAT('%', :type, '%') and c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
+    //오버로딩 (type 이 필터에 없을 경우 페이징 처리를 위해 분리)
+    @Query("select c from CampEntity c join c.campTypes t where t.type = :type and c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByRegion(Pageable pageable, @Param("type") String type, @Param("region") String region, @Param("searchTerm") String searchTerm);
 
-    @Query("select c from CampEntity c join c.campTypes t where t.type like CONCAT('%', :type, '%') and c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
+    @Query("select c from CampEntity c where c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
+    public Page<CampEntity> getListByRegion(Pageable pageable, @Param("region") String region, @Param("searchTerm") String searchTerm);
+
+    //오버로딩 (type 이 필터에 없을 경우 페이징 처리를 위해 분리)
+    @Query("select c from CampEntity c join c.campTypes t where t.type = :type and c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByWeather(Pageable pageable, @Param("type") String type, @Param("regions") List<String> regions, @Param("searchTerm") String searchTerm);
+    @Query("select c from CampEntity c where c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
+    public Page<CampEntity> getListByWeather(Pageable pageable, @Param("regions") List<String> regions, @Param("searchTerm") String searchTerm);
 
 
     public CampEntity getByCampNo(Long campNo);
