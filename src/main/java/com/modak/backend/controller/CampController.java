@@ -37,6 +37,7 @@ public class CampController {
         return ResponseEntity.ok(Map.of("data",campDtoList));
     }
     //원하는 페이지, 사이즈, 날짜, 날씨
+    //날짜와 날씨 필수여야 하므로, 프론트 단에서 기본값 지정 ex) 오늘 날짜, 맑은 날
     @GetMapping("/listByWeather")
     public ResponseEntity<?> listByWeather(@RequestBody PageRequestDto pageRequestDto){
         List<CampDto> campDtoList = campService.getListByWeather(pageRequestDto);
