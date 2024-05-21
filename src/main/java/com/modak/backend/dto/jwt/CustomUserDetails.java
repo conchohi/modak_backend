@@ -1,5 +1,6 @@
-package com.modak.backend.dto;
+package com.modak.backend.dto.jwt;
 
+import com.modak.backend.dto.UserDto;
 import com.modak.backend.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
-    private final UserEntity userEntity;
+    private final UserDto userDto;
 
-    public CustomUserDetails(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public CustomUserDetails(UserDto userDto) {
+        this.userDto = userDto;
     }
 
     @Override
@@ -22,7 +23,7 @@ public class CustomUserDetails implements UserDetails {
             @Override
             public String getAuthority() {
 
-                return userEntity.getRole();
+                return userDto.getRole();
             }
         });
         return collection;
@@ -30,12 +31,16 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return userEntity.getPassword();
+        return userDto.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return userEntity.getUserId();
+        return userDto.getUsername();
+    }
+
+    public String getNickname() {
+        return userDto.getNickname();
     }
 
     @Override
