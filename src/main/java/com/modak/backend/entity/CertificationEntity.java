@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name="certification")
-@Table(name="certification")
+@Table(name="certification_tbl")
 public class CertificationEntity {
     @Id
     private String userId;
