@@ -26,6 +26,7 @@ public class NaverResponse implements OAuthResponse{
 
     @Override
     public String getNickname() {
-        return attribute.get("nickname").toString();
+        Object nickname = attribute.get("nickname");
+        return nickname != null ? nickname.toString() : null;
     }
 }
