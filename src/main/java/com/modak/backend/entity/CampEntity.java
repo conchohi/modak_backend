@@ -39,6 +39,12 @@ public class CampEntity {
     private String homePage;
     private String imgName;
 
+    @OneToMany(mappedBy = "camp", cascade = CascadeType.ALL
+            , orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    private List<ReviewEntity> reviewList;
+
+
     @ElementCollection
     @Builder.Default
     @CollectionTable(name = "camp_facility")

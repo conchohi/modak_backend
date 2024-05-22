@@ -15,7 +15,7 @@ class WeatherServiceImplTest {
     WeatherService weatherService;
     @Test
     void getGoodWeatherRegions() {
-        List<String> regions = weatherService.getGoodWeatherRegions(LocalDate.now());
+        List<String> regions = weatherService.getRegionsByWeather("맑음",LocalDate.now());
         System.out.println(regions);
     }
 

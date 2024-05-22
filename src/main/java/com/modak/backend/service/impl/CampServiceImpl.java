@@ -2,8 +2,11 @@ package com.modak.backend.service.impl;
 
 import com.modak.backend.dto.CampDto;
 import com.modak.backend.dto.PageRequestDto;
+import com.modak.backend.dto.ReviewDto;
+import com.modak.backend.dto.response.PageResponseDto;
 import com.modak.backend.dtointerface.CampInterface;
 import com.modak.backend.entity.CampEntity;
+import com.modak.backend.entity.ReviewEntity;
 import com.modak.backend.entity.embeddable.CampFacility;
 import com.modak.backend.entity.embeddable.CampType;
 import com.modak.backend.repository.CampRepository;
@@ -11,6 +14,7 @@ import com.modak.backend.service.CampService;
 import com.modak.backend.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -58,6 +62,7 @@ public class CampServiceImpl implements CampService {
                 .homePage(campEntity.getHomePage())
                 .build();
 
+        campDto.setReviewList(getReivewList(campEntity.getReviewList()));
         campDto.setTypes(getTypes(campEntity.getCampTypes()));
         campDto.setFacilities(getFacilities(campEntity.getFacilities()));
 
@@ -93,7 +98,7 @@ public class CampServiceImpl implements CampService {
     }
 
     @Override
-    public List<CampDto> getListByRegion(PageRequestDto pageRequestDto) {
+    public PageResponseDto<CampDto> getListByRegion(PageRequestDto pageRequestDto) {
         List<CampDto> dtoList = new ArrayList<>();
 
         int page = pageRequestDto.getPage() - 1;
@@ -103,23 +108,31 @@ public class CampServiceImpl implements CampService {
         String searchTerm = checkNull(pageRequestDto.getSearchTerm());
         Pageable pageable = PageRequest.of(page, size);
 
-        List<CampEntity> campEntityList;
+        Page<CampEntity> campPage;
 
         //type 을 지정 안 할 경우 where 조건에서 제외
-        if (type == null) campEntityList = campRepository.getListByRegion(pageable,region,searchTerm).getContent();
-        else campEntityList = campRepository.getListByRegion(pageable,type,region,searchTerm).getContent();
+        if (type == null) campPage
+                = campRepository.getListByRegion(pageable,region,searchTerm);
+        else campPage = campRepository.getListByRegion(pageable,type,region,searchTerm);
 
-        for (CampEntity campEntity : campEntityList) {
+        for (CampEntity campEntity : campPage.getContent()) {
             CampDto campDto = entityToDto(campEntity);
 
             campDto.setTypes(getTypes(campEntity.getCampTypes()));
             dtoList.add(campDto);
         }
-        return dtoList;
+
+        PageResponseDto<CampDto> pageResponseDto = PageResponseDto.<CampDto>builder()
+                .dtoList(dtoList)
+                .pageRequestDTO(pageRequestDto)
+                .totalCount(campPage.getTotalElements())
+                .build();
+
+        return pageResponseDto;
     }
 
     @Override
-    public List<CampDto> getListByWeather(PageRequestDto pageRequestDto) {
+    public PageResponseDto<CampDto> getListByWeather(PageRequestDto pageRequestDto) {
         List<CampDto> dtoList = new ArrayList<>();
         int page = pageRequestDto.getPage() - 1;
         int size = pageRequestDto.getSize();
@@ -131,19 +144,29 @@ public class CampServiceImpl implements CampService {
         String searchTerm = checkNull(pageRequestDto.getSearchTerm());
         Pageable pageable = PageRequest.of(page, size);
 
-        List<CampEntity> campEntityList;
 
         //type 을 지정 안 할 경우 where 조건에서 제외
-        if (type == null) campEntityList = campRepository.getListByWeather(pageable,regions,searchTerm).getContent();
-        else campEntityList = campRepository.getListByWeather(pageable,type,regions,searchTerm).getContent();
+        Page<CampEntity> campPage;
 
-        for (CampEntity campEntity : campEntityList) {
+        //type 을 지정 안 할 경우 where 조건에서 제외
+        if (type == null) campPage
+                = campRepository.getListByWeather(pageable,regions,searchTerm);
+        else campPage = campRepository.getListByWeather(pageable,type,regions,searchTerm);
+
+        for (CampEntity campEntity : campPage.getContent()) {
             CampDto campDto = entityToDto(campEntity);
 
             campDto.setTypes(getTypes(campEntity.getCampTypes()));
             dtoList.add(campDto);
         }
-        return dtoList;
+
+        PageResponseDto<CampDto> pageResponseDto = PageResponseDto.<CampDto>builder()
+                .dtoList(dtoList)
+                .pageRequestDTO(pageRequestDto)
+                .totalCount(campPage.getTotalElements())
+                .build();
+
+        return pageResponseDto;
     }
 
     private CampDto interfaceToDto(CampInterface campInterface) {
@@ -204,6 +227,20 @@ public class CampServiceImpl implements CampService {
         }
 
         return facilities;
+    }
+    private List<ReviewDto> getReivewList(List<ReviewEntity> reviewEntityList){
+        List<ReviewDto> reviewList = new ArrayList<>();
+        for (ReviewEntity reviewEntity : reviewEntityList) {
+            ReviewDto reviewDto = ReviewDto.builder()
+                    .reviewNo(reviewEntity.getReviewNo())
+                    .title(reviewEntity.getTitle())
+                    .content(reviewEntity.getContent())
+                    .score(reviewEntity.getScore())
+                    .build();
+
+            reviewList.add(reviewDto);
+        }
+        return reviewList;
     }
 
     private String checkNull(String str){

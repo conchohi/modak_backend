@@ -41,7 +41,7 @@ class CampServiceImplTest {
         pageRequestDto.setPage(1);
         pageRequestDto.setSize(5);
         pageRequestDto.setType("글램핑");
-        List<CampDto> campDtoList = campService.getListByRegion(pageRequestDto);
+        List<CampDto> campDtoList = campService.getListByRegion(pageRequestDto).getDtoList();
         for (CampDto campDto : campDtoList) {
             System.out.println(campDto);
         }
