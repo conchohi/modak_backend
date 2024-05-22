@@ -1,9 +1,9 @@
 package com.modak.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity(name="user")
 @Table(name="user_tbl")
+@ToString
 public class UserEntity {
     @Id
     private String userId;
@@ -21,4 +22,9 @@ public class UserEntity {
     private String nickname;
     private String profileImage;
     private String sns;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL
+            , orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    private List<FavoriteEntity> favorites;
 }

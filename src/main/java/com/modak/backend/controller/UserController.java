@@ -2,7 +2,9 @@ package com.modak.backend.controller;
 
 import com.modak.backend.dto.UserDto;
 import com.modak.backend.service.UserService;
+import com.modak.backend.util.FileUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
+    private final FileUtil fileUtil;
     @PostMapping("")
     public ResponseEntity<?> get(){
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -19,6 +22,10 @@ public class UserController {
         return ResponseEntity.ok(userDto);
     }
 
+    @GetMapping("/{profileImage}")
+    public ResponseEntity<Resource> getImage(@PathVariable("profileImage") String profileImage){
+        return fileUtil.getFile(profileImage);
+    }
     @PutMapping("")
     public ResponseEntity<?> modify(@RequestBody UserDto userDto){
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
