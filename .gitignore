@@ -41,3 +41,4 @@ application-db.yml
 application-secret.yml
 application-log.yml
 application-oauth.yml
+application-oauth.yml
