@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -17,4 +18,6 @@ public class UserDto {
     private String profileImage;
     private String sns;
     private String role;
+
+    private MultipartFile profileFile;
 }
