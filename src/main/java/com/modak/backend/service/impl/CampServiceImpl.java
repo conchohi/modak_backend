@@ -7,6 +7,7 @@ import com.modak.backend.dto.response.PageResponseDto;
 import com.modak.backend.dtointerface.CampInterface;
 import com.modak.backend.entity.CampEntity;
 import com.modak.backend.entity.ReviewEntity;
+import com.modak.backend.entity.UserEntity;
 import com.modak.backend.entity.embeddable.CampFacility;
 import com.modak.backend.entity.embeddable.CampType;
 import com.modak.backend.repository.CampRepository;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -73,7 +75,17 @@ public class CampServiceImpl implements CampService {
     @Override
     public List<CampDto> getBest4(LocalDate date) {
         List<String> regions = weatherService.getRegionsByWeather("맑음",date);
-        System.out.println(regions);
+        //혹시나 맑은 날씨가 없을 경우 맑음 -> 구름 -> 흐림 순으로
+        if(regions.isEmpty()){
+            regions = weatherService.getRegionsByWeather("구름", date);
+            if(regions.isEmpty()){
+                regions = weatherService.getRegionsByWeather("흐림", date);
+                if(regions.isEmpty()){
+                    regions = weatherService.getRegionsByWeather("", date);
+                }
+            }
+        }
+
         List<CampDto> dtoList = new ArrayList<>();
         List<CampInterface> campInterfaceList = campRepository.selectBestFourByBestRegions(regions);
         for (CampInterface campInterface : campInterfaceList) {
@@ -111,8 +123,7 @@ public class CampServiceImpl implements CampService {
         Page<CampEntity> campPage;
 
         //type 을 지정 안 할 경우 where 조건에서 제외
-        if (type == null) campPage
-                = campRepository.getListByRegion(pageable,region,searchTerm);
+        if (!StringUtils.hasText(type)) campPage = campRepository.getListByRegion(pageable,region,searchTerm);
         else campPage = campRepository.getListByRegion(pageable,type,region,searchTerm);
 
         for (CampEntity campEntity : campPage.getContent()) {
@@ -149,7 +160,7 @@ public class CampServiceImpl implements CampService {
         Page<CampEntity> campPage;
 
         //type 을 지정 안 할 경우 where 조건에서 제외
-        if (type == null) campPage
+        if (!StringUtils.hasText(type)) campPage
                 = campRepository.getListByWeather(pageable,regions,searchTerm);
         else campPage = campRepository.getListByWeather(pageable,type,regions,searchTerm);
 
@@ -185,6 +196,7 @@ public class CampServiceImpl implements CampService {
                 .lineIntro(campEntity.getLineIntro())
                 .imgName(campEntity.getImgName())
                 .phone(campEntity.getPhone())
+                .reviewCount(campEntity.getReviewList().size())
                 .build();
     }
 
@@ -207,6 +219,11 @@ public class CampServiceImpl implements CampService {
         }
 
         for (String type : campDto.getTypes()) {
+            if(type.equals("자동차야영장")){
+                type = "오토캠핑";
+            } else if (type.equals("일반야영장")) {
+                type = "일반캠핑장";
+            }
             campEntity.addType(type);
         }
 
@@ -231,11 +248,15 @@ public class CampServiceImpl implements CampService {
     private List<ReviewDto> getReivewList(List<ReviewEntity> reviewEntityList){
         List<ReviewDto> reviewList = new ArrayList<>();
         for (ReviewEntity reviewEntity : reviewEntityList) {
+            UserEntity userEntity = reviewEntity.getUser();
             ReviewDto reviewDto = ReviewDto.builder()
                     .reviewNo(reviewEntity.getReviewNo())
                     .title(reviewEntity.getTitle())
                     .content(reviewEntity.getContent())
                     .score(reviewEntity.getScore())
+                    .userNickname(userEntity.getNickname())
+                    .createDate(reviewEntity.getCreateDate())
+                    .userProfileImage(userEntity.getProfileImage())
                     .build();
 
             reviewList.add(reviewDto);
