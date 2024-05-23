@@ -26,16 +26,16 @@ public interface CampRepository extends JpaRepository<CampEntity,Long> {
 
 
     //오버로딩 (type 이 필터에 없을 경우 페이징 처리를 위해 분리)
-    @Query("select c from CampEntity c join c.campTypes t where t.type = :type and c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
+    @Query("select c from CampEntity c left join fetch c.reviewList join c.campTypes t where t.type = :type and c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByRegion(Pageable pageable, @Param("type") String type, @Param("region") String region, @Param("searchTerm") String searchTerm);
 
-    @Query("select c from CampEntity c where c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
+    @Query("select c from CampEntity c left join fetch c.reviewList where c.region like CONCAT('%', :region, '%') and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByRegion(Pageable pageable, @Param("region") String region, @Param("searchTerm") String searchTerm);
 
     //오버로딩 (type 이 필터에 없을 경우 페이징 처리를 위해 분리)
-    @Query("select c from CampEntity c join c.campTypes t where t.type = :type and c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
+    @Query("select c from CampEntity c left join fetch c.reviewList join c.campTypes t where t.type = :type and c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByWeather(Pageable pageable, @Param("type") String type, @Param("regions") List<String> regions, @Param("searchTerm") String searchTerm);
-    @Query("select c from CampEntity c where c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
+    @Query("select c from CampEntity c left join fetch c.reviewList where c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByWeather(Pageable pageable, @Param("regions") List<String> regions, @Param("searchTerm") String searchTerm);
 
     @Query("select c from CampEntity c left join fetch c.reviewList r where c.campNo = :campNo")

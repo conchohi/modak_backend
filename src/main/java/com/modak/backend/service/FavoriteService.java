@@ -63,5 +63,13 @@ public class FavoriteService {
         // 조회된 FavoriteEntity의 favoriteNo를 사용하여 삭제합니다.
         favoriteRepository.deleteById(favorite.getFavoriteNo());
     }
+
+    public boolean getFavorite(FavoriteDto favoriteDto){
+        FavoriteEntity favorite = favoriteRepository.findByUserUserIdAndCampCampNo(
+                favoriteDto.getUserId(), favoriteDto.getCampNo()
+        );
+
+        return favorite != null;
+    }
 }
 

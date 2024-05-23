@@ -53,6 +53,7 @@ public class ReviewServiceImpl implements ReviewService {
                     .title(reviewEntity.getTitle())
                     .content(reviewEntity.getContent())
                     .score(reviewEntity.getScore())
+                    .createDate(reviewEntity.getCreateDate())
                     .build();
 
             dtoList.add(reviewDto);
@@ -89,6 +90,7 @@ public class ReviewServiceImpl implements ReviewService {
                 .title(reviewEntity.getTitle())
                 .content(reviewEntity.getContent())
                 .score(reviewEntity.getScore())
+                .createDate(reviewEntity.getCreateDate())
                 .build();
 
         return reviewDto;
@@ -97,6 +99,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void delete(Long reviewNo, String id) {
         ReviewEntity reviewEntity = reviewRepository.getByReviewNo(reviewNo);
+        CampEntity camp = reviewEntity.getCamp();
         //등록자의 아이디와 삭제 요청한 자의 아이디가 다르면
         if(!id.equals(reviewEntity.getUser().getUserId())){
             throw new IllegalStateException("삭제 권한이 없습니다.");
