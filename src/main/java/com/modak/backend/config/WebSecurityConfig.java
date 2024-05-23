@@ -86,6 +86,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/", "/login", "/reissue","/api/v1/auth/**", "/api/camp/**", "/api/weather/**", "/api/notice/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/review/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/user/**").permitAll()
                         .requestMatchers("/api/v1/user/**").hasRole("USER")
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()

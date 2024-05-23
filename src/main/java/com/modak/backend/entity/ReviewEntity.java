@@ -2,6 +2,9 @@ package com.modak.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 @Getter
 @Builder
@@ -26,6 +29,8 @@ public class ReviewEntity {
     private String title;
     private String content;
     private double score;
+    @CreatedDate
+    private LocalDate createDate;
 
     public void change(String title, String content, double score){
         this.title = title;
