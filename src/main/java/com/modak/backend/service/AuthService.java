@@ -17,5 +17,4 @@ public interface AuthService {
     ResponseEntity<? super ResponseDto> join(UserDto dto);
     ResponseEntity<? super EmailCertificationResponseDto> emailCertification(EmailCertificationRequestDto dto);
     ResponseEntity<? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto);
-    ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto);
 }

@@ -109,18 +109,5 @@ public class AuthServiceImpl implements AuthService {
         return CheckCertificationResponseDto.success();
     }
 
-    @Override
-    public ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto) {
-        String token = null;
-
-        try {
-            
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            return ResponseDto.databaseError();
-        }
-        return SignInResponseDto.success(token);
-    }
-
 }
 
