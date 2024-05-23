@@ -1,5 +1,6 @@
 package com.modak.backend.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.List;
 @ToString
 @Builder
 public class UserDto {
+    @JsonProperty("id")
     private String username;
     private String password;
     private String nickname;
@@ -20,6 +22,7 @@ public class UserDto {
     private String profileImage;
     private String sns;
     private String role;
+    private String certificationNumber;
 
     private MultipartFile profileFile;
     private List<CampDto> favorites;

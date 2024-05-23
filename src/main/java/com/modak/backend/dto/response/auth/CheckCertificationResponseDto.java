@@ -1,5 +1,7 @@
 package com.modak.backend.dto.response.auth;
 
+import com.modak.backend.common.ResponseCode;
+import com.modak.backend.common.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -19,7 +21,7 @@ public class CheckCertificationResponseDto extends ResponseDto {
     }
 
     public static ResponseEntity<ResponseDto> certificationFail() {
-        ResponseDto responseBody = new ResponseDto();
+        ResponseDto responseBody = new ResponseDto(ResponseCode.CERTIFICATION_FAIL, ResponseMessage.CERTIFICATION_FAIL);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
     }
 
