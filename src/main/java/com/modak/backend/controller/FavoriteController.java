@@ -17,16 +17,21 @@ public class FavoriteController {
     @Autowired
     private FavoriteService favoriteService;
 
-    @PostMapping("")
-    public ResponseEntity<?> addFavorite(@RequestBody FavoriteDto favoriteDto) {
+    @PostMapping("/{campNo}")
+    public ResponseEntity<?> addFavorite(@PathVariable("campNo") Long campNo) {
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
+        FavoriteDto favoriteDto = new FavoriteDto();
+        favoriteDto.setCampNo(campNo);
         favoriteDto.setUserId(id);
+        favoriteService.addFavorite(favoriteDto);
         return ResponseEntity.ok(Map.of("message","success"));
     }
 
-    @DeleteMapping("")
-    public ResponseEntity<?> removeFavorite(@RequestBody FavoriteDto favoriteDto) {
+    @DeleteMapping("/{campNo}")
+    public ResponseEntity<?> removeFavorite(@PathVariable("campNo") Long campNo) {
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
+        FavoriteDto favoriteDto = new FavoriteDto();
+        favoriteDto.setCampNo(campNo);
         favoriteDto.setUserId(id);
         try{
              favoriteService.removeFavorite(favoriteDto);
@@ -36,5 +41,15 @@ public class FavoriteController {
         return ResponseEntity.ok(Map.of("message","success"));
     }
 
+    @GetMapping("/{campNo}")
+    public ResponseEntity<?> isLike(@PathVariable("campNo") Long campNo){
+        String id = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        FavoriteDto favoriteDto = new FavoriteDto();
+        favoriteDto.setUserId(id);
+        favoriteDto.setCampNo(campNo);
+        boolean isLike = favoriteService.getFavorite(favoriteDto);
+        return ResponseEntity.ok(Map.of("isLike",isLike));
+    }
 
 }
