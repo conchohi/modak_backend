@@ -5,7 +5,9 @@ import com.modak.backend.dto.UserDto;
 import com.modak.backend.dto.request.auth.CheckCertificationRequestDto;
 import com.modak.backend.dto.request.auth.EmailCertificationRequestDto;
 import com.modak.backend.dto.request.auth.IdCheckRequestDto;
+import com.modak.backend.dto.request.auth.SignInRequestDto;
 import com.modak.backend.dto.response.auth.IdCheckResponseDto;
+import com.modak.backend.dto.response.auth.SignInResponseDto;
 import com.modak.backend.dto.response.ResponseDto;
 import com.modak.backend.dto.response.auth.CheckCertificationResponseDto;
 import com.modak.backend.dto.response.auth.EmailCertificationResponseDto;
@@ -105,6 +107,19 @@ public class AuthServiceImpl implements AuthService {
             return ResponseDto.databaseError();
         }
         return CheckCertificationResponseDto.success();
+    }
+
+    @Override
+    public ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto) {
+        String token = null;
+
+        try {
+            
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return SignInResponseDto.success(token);
     }
 
 }
