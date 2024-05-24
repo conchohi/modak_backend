@@ -23,7 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final FavoriteRepository favoriteRepository;
     private final FileUtil fileUtil;
     @Override
     public UserDto get(String userId) {
