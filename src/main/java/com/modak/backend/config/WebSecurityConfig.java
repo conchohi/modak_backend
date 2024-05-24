@@ -118,6 +118,7 @@ public class WebSecurityConfig {
         corsConfiguration.setExposedHeaders(Collections.singletonList("Authorization"));
         corsConfiguration.setExposedHeaders(Collections.singletonList("access"));
 
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
 

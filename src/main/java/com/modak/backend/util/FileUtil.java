@@ -54,10 +54,6 @@ public class FileUtil {
         try {
             Files.copy(file.getInputStream(), savePath);
 
-            //변경1
-            String contentType = file.getContentType();
-            //이미지 여부 확인
-
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         } //end of try

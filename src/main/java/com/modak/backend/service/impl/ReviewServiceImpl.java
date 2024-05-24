@@ -38,23 +38,7 @@ public class ReviewServiceImpl implements ReviewService {
         Page<ReviewEntity> reviewPage = reviewRepository.getAllList(pageable);
         List<ReviewDto> dtoList = new ArrayList<>();
         for (ReviewEntity reviewEntity : reviewPage.getContent()) {
-            CampEntity campEntity = reviewEntity.getCamp();
-            //캠핑장 이름과 번호, 이미지만 담기
-            CampDto campDto = CampDto.builder()
-                    .campNo(campEntity.getCampNo())
-                    .name(campEntity.getName())
-                    .imgName(campEntity.getImgName())
-                    .build();
-
-            ReviewDto reviewDto = ReviewDto.builder()
-                    .reviewNo(reviewEntity.getReviewNo())
-                    .campDto(campDto)
-                    .userNickname(reviewEntity.getUser().getNickname())
-                    .title(reviewEntity.getTitle())
-                    .content(reviewEntity.getContent())
-                    .score(reviewEntity.getScore())
-                    .createDate(reviewEntity.getCreateDate())
-                    .build();
+            ReviewDto reviewDto = entityToDto(reviewEntity);
 
             dtoList.add(reviewDto);
         }
@@ -68,6 +52,37 @@ public class ReviewServiceImpl implements ReviewService {
         return pageResponseDto;
     }
 
+    @Override
+    public List<ReviewDto> getListByUserId(String userId) {
+        List<ReviewDto> dtoList = new ArrayList<>();
+        List<ReviewEntity> ReviewList = reviewRepository.getReviewEntitiesByUserUserId(userId);
+        for (ReviewEntity reviewEntity : ReviewList) {
+            ReviewDto reviewDto = entityToDto(reviewEntity);
+            dtoList.add(reviewDto);
+        }
+        return dtoList;
+    }
+    private ReviewDto entityToDto(ReviewEntity reviewEntity) {
+        CampEntity campEntity = reviewEntity.getCamp();
+        //캠핑장 이름과 번호, 이미지만 담기
+        CampDto campDto = CampDto.builder()
+                .campNo(campEntity.getCampNo())
+                .name(campEntity.getName())
+                .imgName(campEntity.getImgName())
+                .build();
+
+        ReviewDto reviewDto = ReviewDto.builder()
+                .reviewNo(reviewEntity.getReviewNo())
+                .campDto(campDto)
+                .userNickname(reviewEntity.getUser().getNickname())
+                .userProfileImage(reviewEntity.getUser().getProfileImage())
+                .title(reviewEntity.getTitle())
+                .content(reviewEntity.getContent())
+                .score(reviewEntity.getScore())
+                .createDate(reviewEntity.getCreateDate())
+                .build();
+        return reviewDto;
+    }
     @Override
     @Transactional(readOnly = true)
     public ReviewDto getReview(Long reviewNo) {
