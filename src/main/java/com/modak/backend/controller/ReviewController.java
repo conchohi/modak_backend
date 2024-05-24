@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -70,5 +71,12 @@ public class ReviewController {
         }
 
         return ResponseEntity.ok(Map.of("message","success"));
+    }
+
+    @GetMapping("/listByUser")
+    public ResponseEntity<?> getReviewListByUser(){
+        String id = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<ReviewDto> dtoList = reviewService.getListByUserId(id);
+        return ResponseEntity.ok(dtoList);
     }
 }

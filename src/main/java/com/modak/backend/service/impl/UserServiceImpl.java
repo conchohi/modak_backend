@@ -13,6 +13,7 @@ import com.modak.backend.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,12 +56,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public void modify(UserDto userDto) {
         UserEntity user = userRepository.findByUserId(userDto.getUsername());
+        //기존 이미지 이름
+        String beforeProfileImage = userDto.getProfileImage();
+        String profileImage = null;
+        MultipartFile multipartFile = userDto.getProfileFile();
+        //새로운 이미지가 왔으면 저장하고 기존 이미지 삭제
+        if(multipartFile != null) {
+            profileImage = fileUtil.saveFile(multipartFile);
+            fileUtil.deleteFile(beforeProfileImage);
+            user.setProfileImage(profileImage);
+        }
+        if(userDto.getIsDelete().equals("true")){
+            user.setProfileImage(null);
+            fileUtil.deleteFile(beforeProfileImage);
+        }
 
-        String profileImage = fileUtil.saveFile(userDto.getProfileFile());
-        fileUtil.deleteFile(user.getProfileImage());
         user.setNickname(userDto.getNickname());
-        user.setProfileImage(profileImage);
-
+        userRepository.save(user);
     }
 
 //    @Override

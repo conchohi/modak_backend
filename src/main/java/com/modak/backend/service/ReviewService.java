@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ReviewService {
     public PageResponseDto<ReviewDto> getList(PageRequestDto pageRequestDto);
+    public List<ReviewDto> getListByUserId(String userId);
     public ReviewDto getReview(Long reviewNo);
     public void delete(Long reviewNo, String id);
     public Long register(ReviewDto reviewDto);
