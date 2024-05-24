@@ -38,6 +38,6 @@ public interface CampRepository extends JpaRepository<CampEntity,Long> {
     @Query("select c from CampEntity c left join fetch c.reviewList where c.region in :regions and c.name like CONCAT('%', :searchTerm, '%') ")
     public Page<CampEntity> getListByWeather(Pageable pageable, @Param("regions") List<String> regions, @Param("searchTerm") String searchTerm);
 
-    @Query("select c from CampEntity c left join fetch c.reviewList r where c.campNo = :campNo")
+    @Query("select c from CampEntity c left join fetch c.reviewList r where c.campNo = :campNo order by r.reviewNo desc ")
     public CampEntity getByCampNo(@Param("campNo") Long campNo);
 }
