@@ -60,7 +60,6 @@ public class UserServiceImpl implements UserService {
         fileUtil.deleteFile(user.getProfileImage());
         user.setNickname(userDto.getNickname());
         user.setProfileImage(profileImage);
-        user.setEmail(userDto.getEmail());
 
     }
 

@@ -11,7 +11,7 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
 
     UserEntity findByUserId(String userId);
 
-    @Query("select u from user u left join fetch u.favorites where u.userId = :userId")
+    @Query("select u from user u left join fetch u.favorites f where u.userId = :userId order by f.favoriteNo desc")
     UserEntity findUserAndFavoriteByUserId(@Param("userId") String userId);
 
 }
