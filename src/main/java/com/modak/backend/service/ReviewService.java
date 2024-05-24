@@ -13,4 +13,6 @@ public interface ReviewService {
     public void delete(Long reviewNo, String id);
     public Long register(ReviewDto reviewDto);
     public void modify(ReviewDto reviewDto);
+
+    public boolean isExistByUserIdAndCampNo(ReviewDto reviewDto);
 }

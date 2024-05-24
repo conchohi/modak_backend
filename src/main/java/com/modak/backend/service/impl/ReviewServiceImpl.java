@@ -154,4 +154,11 @@ public class ReviewServiceImpl implements ReviewService {
                 reviewDto.getScore()
         );
     }
+
+    @Override
+    public boolean isExistByUserIdAndCampNo(ReviewDto reviewDto) {
+        String userId = reviewDto.getUserId();
+        Long campNo = reviewDto.getCampNo();
+        return reviewRepository.existsByCampCampNoAndUserUserId(campNo,userId);
+    }
 }
