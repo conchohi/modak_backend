@@ -3,6 +3,7 @@ package com.modak.backend.controller;
 import com.modak.backend.dto.UserDto;
 import com.modak.backend.dto.request.auth.CheckCertificationRequestDto;
 import com.modak.backend.dto.request.auth.EmailCertificationRequestDto;
+import com.modak.backend.dto.request.auth.FindIdRequestDto;
 import com.modak.backend.dto.request.auth.IdCheckRequestDto;
 import com.modak.backend.dto.response.auth.IdCheckResponseDto;
 import com.modak.backend.dto.response.ResponseDto;
@@ -50,6 +51,18 @@ public class AuthController {
             (@RequestBody @Valid CheckCertificationRequestDto requestBody){
         ResponseEntity<? super CheckCertificationResponseDto> response = authService.checkCertification(requestBody);
         return response;
+    }
+
+    @PostMapping("/send-certification-email")
+    public ResponseEntity<Void> sendCertificationEmail(@RequestBody EmailCertificationRequestDto request) {
+        authService.sendCertificationEmail(request);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/check-certification")
+    public ResponseEntity<Void> checkCertification(@RequestBody FindIdRequestDto request) {
+        authService.checkCertification(request);
+        return ResponseEntity.ok().build();
     }
 
 }

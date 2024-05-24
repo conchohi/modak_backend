@@ -89,6 +89,7 @@ public class AuthServiceImpl implements AuthService {
         return EmailCertificationResponseDto.success();
     }
 
+    // 인증번호 확인
     @Override
     public ResponseEntity<? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto) {
         try {
@@ -105,6 +106,23 @@ public class AuthServiceImpl implements AuthService {
             return ResponseDto.databaseError();
         }
         return CheckCertificationResponseDto.success();
+    }
+
+    // 아이디 찾기 
+    @Override
+    public ResponseEntity<? super ResponseDto> findIdByEmail(String email) {
+        try {
+            UserEntity user = userRepository.findByEmail(email);
+            if (user != null) {
+                String userIdPart = user.getUserId().substring(0, 3) + "***";
+                emailProvider.sendCertificationMail(email, "회원님의 아이디는 " + userIdPart + "입니다.");
+                return ResponseEntity.ok(new ResponseDto());
+            } else {
+                return ResponseEntity.badRequest().body(new ResponseDto("해당 이메일로 등록된 아이디가 없습니다.", email));
+            }
+        } catch (Exception e) {
+            return ResponseDto.databaseError();
+        }
     }
 
 }
