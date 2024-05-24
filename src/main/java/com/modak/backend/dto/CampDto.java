@@ -23,11 +23,14 @@ public class CampDto {
     private String region;
     private String homePage;
     private String imgName;
-    private int reviewCount;
 
     @Builder.Default
     private List<String> types = new ArrayList<>();
 
     @Builder.Default
     private List<String> facilities = new ArrayList<>();
+
+    @Builder.Default
+    private List<ReviewDto> reviewList = new ArrayList<>();
+
 }

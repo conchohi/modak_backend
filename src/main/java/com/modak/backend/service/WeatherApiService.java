@@ -78,7 +78,7 @@ public class WeatherApiService {
     @Scheduled(cron = "0 0 0 * * *")
     public void registerWeeklyWeatherByApi() {
         weatherService.deletePastWeather();
-        int cnt = 7; //7일치
+        int cnt = 15; //15일치
         for (GeoLocation location : locations) {
             double lat = location.getLat();
             double lon = location.getLon();
