@@ -4,6 +4,7 @@ import com.modak.backend.common.CertificationNumber;
 import com.modak.backend.dto.UserDto;
 import com.modak.backend.dto.request.auth.CheckCertificationRequestDto;
 import com.modak.backend.dto.request.auth.EmailCertificationRequestDto;
+import com.modak.backend.dto.request.auth.FindIdRequestDto;
 import com.modak.backend.dto.request.auth.IdCheckRequestDto;
 import com.modak.backend.dto.response.auth.IdCheckResponseDto;
 import com.modak.backend.dto.response.ResponseDto;
@@ -108,7 +109,7 @@ public class AuthServiceImpl implements AuthService {
         return CheckCertificationResponseDto.success();
     }
 
-    // 아이디 찾기 
+    // 아이디 찾기
     @Override
     public ResponseEntity<? super ResponseDto> findIdByEmail(String email) {
         try {

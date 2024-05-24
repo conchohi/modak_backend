@@ -53,18 +53,11 @@ public class AuthController {
         return response;
     }
 
-    @PostMapping("/send-certification-email")
-    public ResponseEntity<Void> sendCertificationEmail(@RequestBody EmailCertificationRequestDto request) {
-        authService.sendCertificationEmail(request);
-        return ResponseEntity.ok().build();
+    //아이디 찾기
+    @PostMapping("/findId-email-certification")
+    public ResponseEntity<?> sendCertificationEmail(@RequestBody EmailCertificationRequestDto request) {
+        return authService.findIdByEmail(request.getEmail());
     }
-
-    @PostMapping("/check-certification")
-    public ResponseEntity<Void> checkCertification(@RequestBody FindIdRequestDto request) {
-        authService.checkCertification(request);
-        return ResponseEntity.ok().build();
-    }
-
 }
 
     
