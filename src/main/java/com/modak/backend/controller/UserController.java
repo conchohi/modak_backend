@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
     private final FileUtil fileUtil;
-    @PostMapping("")
+    @GetMapping("")
     public ResponseEntity<?> get(){
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
         UserDto userDto = userService.get(id);
