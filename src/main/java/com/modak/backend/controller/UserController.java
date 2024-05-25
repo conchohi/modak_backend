@@ -26,7 +26,7 @@ public class UserController {
     public ResponseEntity<Resource> getImage(@PathVariable("profileImage") String profileImage){
         return fileUtil.getFile(profileImage);
     }
-    @PutMapping("")
+    @PatchMapping("")
     public ResponseEntity<?> modify(UserDto userDto){
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
         userDto.setUsername(id);

@@ -56,7 +56,7 @@ public class ReviewController {
         return ResponseEntity.ok(Map.of("message","success"));
     }
 
-    @PutMapping("/{reviewNo}")
+    @PatchMapping("/{reviewNo}")
     public ResponseEntity<?> modify(@PathVariable(name = "reviewNo") Long reviewNo,
                                     @RequestBody ReviewDto reviewDto){
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -78,5 +78,15 @@ public class ReviewController {
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
         List<ReviewDto> dtoList = reviewService.getListByUserId(id);
         return ResponseEntity.ok(dtoList);
+    }
+
+    @GetMapping("/exist")
+    public ResponseEntity<?> isExistByCampNo(@RequestParam("campNo") Long campNo){
+        String id = SecurityContextHolder.getContext().getAuthentication().getName();
+        ReviewDto reviewDto = new ReviewDto();
+        reviewDto.setUserId(id);
+        reviewDto.setCampNo(campNo);
+        boolean isExist = reviewService.isExistByUserIdAndCampNo(reviewDto);
+        return ResponseEntity.ok(Map.of("isExist",isExist));
     }
 }

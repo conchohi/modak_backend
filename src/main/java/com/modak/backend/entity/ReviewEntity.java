@@ -2,6 +2,7 @@ package com.modak.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
@@ -29,7 +30,7 @@ public class ReviewEntity {
     private String title;
     private String content;
     private double score;
-    @CreatedDate
+    @CreationTimestamp
     private LocalDate createDate;
 
     public void change(String title, String content, double score){

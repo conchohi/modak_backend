@@ -24,6 +24,8 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
     public ReviewEntity getByReviewNo(@Param("reviewNo") Long reviewNo);
 
     @Query("select r from ReviewEntity r left join fetch r.camp " +
-            "where r.user.userId = :userId")
+            "where r.user.userId = :userId order by r.reviewNo desc ")
     public List<ReviewEntity> getReviewEntitiesByUserUserId(@Param("userId") String userId);
+
+    public boolean existsByCampCampNoAndUserUserId(Long campNo, String userId);
 }
