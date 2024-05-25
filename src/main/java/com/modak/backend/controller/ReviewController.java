@@ -56,7 +56,7 @@ public class ReviewController {
         return ResponseEntity.ok(Map.of("message","success"));
     }
 
-    @PutMapping("/{reviewNo}")
+    @PatchMapping("/{reviewNo}")
     public ResponseEntity<?> modify(@PathVariable(name = "reviewNo") Long reviewNo,
                                     @RequestBody ReviewDto reviewDto){
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
