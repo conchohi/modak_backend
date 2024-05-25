@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class NoticeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long noticeNo;
     private String title;
     private String content;
