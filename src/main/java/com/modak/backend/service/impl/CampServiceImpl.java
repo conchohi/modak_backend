@@ -2,8 +2,12 @@ package com.modak.backend.service.impl;
 
 import com.modak.backend.dto.CampDto;
 import com.modak.backend.dto.PageRequestDto;
+import com.modak.backend.dto.ReviewDto;
+import com.modak.backend.dto.response.PageResponseDto;
 import com.modak.backend.dtointerface.CampInterface;
 import com.modak.backend.entity.CampEntity;
+import com.modak.backend.entity.ReviewEntity;
+import com.modak.backend.entity.UserEntity;
 import com.modak.backend.entity.embeddable.CampFacility;
 import com.modak.backend.entity.embeddable.CampType;
 import com.modak.backend.repository.CampRepository;
@@ -11,10 +15,12 @@ import com.modak.backend.service.CampService;
 import com.modak.backend.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -58,6 +64,7 @@ public class CampServiceImpl implements CampService {
                 .homePage(campEntity.getHomePage())
                 .build();
 
+        campDto.setReviewList(getReivewList(campEntity.getReviewList()));
         campDto.setTypes(getTypes(campEntity.getCampTypes()));
         campDto.setFacilities(getFacilities(campEntity.getFacilities()));
 
@@ -68,7 +75,17 @@ public class CampServiceImpl implements CampService {
     @Override
     public List<CampDto> getBest4(LocalDate date) {
         List<String> regions = weatherService.getRegionsByWeather("맑음",date);
-        System.out.println(regions);
+        //혹시나 맑은 날씨가 없을 경우 맑음 -> 구름 -> 흐림 순으로
+        if(regions.isEmpty()){
+            regions = weatherService.getRegionsByWeather("구름", date);
+            if(regions.isEmpty()){
+                regions = weatherService.getRegionsByWeather("흐림", date);
+                if(regions.isEmpty()){
+                    regions = weatherService.getRegionsByWeather("", date);
+                }
+            }
+        }
+
         List<CampDto> dtoList = new ArrayList<>();
         List<CampInterface> campInterfaceList = campRepository.selectBestFourByBestRegions(regions);
         for (CampInterface campInterface : campInterfaceList) {
@@ -93,36 +110,40 @@ public class CampServiceImpl implements CampService {
     }
 
     @Override
-    public List<CampDto> getListByRegion(PageRequestDto pageRequestDto) {
+    public PageResponseDto<CampDto> getListByRegion(PageRequestDto pageRequestDto) {
         List<CampDto> dtoList = new ArrayList<>();
 
         int page = pageRequestDto.getPage() - 1;
         int size = pageRequestDto.getSize();
-        String type = checkNull(pageRequestDto.getType());
+        String type = pageRequestDto.getType();
         String region = checkNull(pageRequestDto.getRegion());
         String searchTerm = checkNull(pageRequestDto.getSearchTerm());
         Pageable pageable = PageRequest.of(page, size);
 
+        Page<CampEntity> campPage;
 
-        List<CampEntity> campEntityList = campRepository.getListByRegion(pageable, type,region,searchTerm).getContent();
-        for (CampEntity campEntity : campEntityList) {
-            CampDto campDto = CampDto.builder()
-                    .campNo(campEntity.getCampNo())
-                    .name(campEntity.getName())
-                    .address(campEntity.getAddress())
-                    .lineIntro(campEntity.getLineIntro())
-                    .imgName(campEntity.getImgName())
-                    .phone(campEntity.getPhone())
-                    .build();
+        //type 을 지정 안 할 경우 where 조건에서 제외
+        if (!StringUtils.hasText(type)) campPage = campRepository.getListByRegion(pageable,region,searchTerm);
+        else campPage = campRepository.getListByRegion(pageable,type,region,searchTerm);
+
+        for (CampEntity campEntity : campPage.getContent()) {
+            CampDto campDto = entityToDto(campEntity);
 
             campDto.setTypes(getTypes(campEntity.getCampTypes()));
             dtoList.add(campDto);
         }
-        return dtoList;
+
+        PageResponseDto<CampDto> pageResponseDto = PageResponseDto.<CampDto>builder()
+                .dtoList(dtoList)
+                .pageRequestDTO(pageRequestDto)
+                .totalCount(campPage.getTotalElements())
+                .build();
+
+        return pageResponseDto;
     }
 
     @Override
-    public List<CampDto> getListByWeather(PageRequestDto pageRequestDto) {
+    public PageResponseDto<CampDto> getListByWeather(PageRequestDto pageRequestDto) {
         List<CampDto> dtoList = new ArrayList<>();
         int page = pageRequestDto.getPage() - 1;
         int size = pageRequestDto.getSize();
@@ -130,35 +151,53 @@ public class CampServiceImpl implements CampService {
         LocalDate date = pageRequestDto.getDate();
 
         List<String> regions = weatherService.getRegionsByWeather(weather,date);
-        String type = checkNull(pageRequestDto.getType());
+        String type = pageRequestDto.getType();
         String searchTerm = checkNull(pageRequestDto.getSearchTerm());
         Pageable pageable = PageRequest.of(page, size);
 
-        List<CampEntity> campEntityList = campRepository.getListByWeather(pageable, type,regions,searchTerm).getContent();
-        for (CampEntity campEntity : campEntityList) {
-            CampDto campDto = CampDto.builder()
-                    .campNo(campEntity.getCampNo())
-                    .name(campEntity.getName())
-                    .address(campEntity.getAddress())
-                    .lineIntro(campEntity.getLineIntro())
-                    .imgName(campEntity.getImgName())
-                    .phone(campEntity.getPhone())
-                    .build();
+
+        //type 을 지정 안 할 경우 where 조건에서 제외
+        Page<CampEntity> campPage;
+
+        //type 을 지정 안 할 경우 where 조건에서 제외
+        if (!StringUtils.hasText(type)) campPage
+                = campRepository.getListByWeather(pageable,regions,searchTerm);
+        else campPage = campRepository.getListByWeather(pageable,type,regions,searchTerm);
+
+        for (CampEntity campEntity : campPage.getContent()) {
+            CampDto campDto = entityToDto(campEntity);
 
             campDto.setTypes(getTypes(campEntity.getCampTypes()));
             dtoList.add(campDto);
         }
-        return dtoList;
+
+        PageResponseDto<CampDto> pageResponseDto = PageResponseDto.<CampDto>builder()
+                .dtoList(dtoList)
+                .pageRequestDTO(pageRequestDto)
+                .totalCount(campPage.getTotalElements())
+                .build();
+
+        return pageResponseDto;
     }
 
     private CampDto interfaceToDto(CampInterface campInterface) {
-        CampDto campDto = CampDto.builder()
+        return CampDto.builder()
                 .campNo(campInterface.getCampNo())
                 .name(campInterface.getName())
                 .address(campInterface.getAddress())
                 .imgName(campInterface.getImgName())
                 .build();
-        return campDto;
+    }
+    private CampDto entityToDto(CampEntity campEntity) {
+        return CampDto.builder()
+                .campNo(campEntity.getCampNo())
+                .name(campEntity.getName())
+                .address(campEntity.getAddress())
+                .lineIntro(campEntity.getLineIntro())
+                .imgName(campEntity.getImgName())
+                .phone(campEntity.getPhone())
+                .reviewCount(campEntity.getReviewList().size())
+                .build();
     }
 
     private CampEntity dtoToEntity(CampDto campDto){
@@ -180,6 +219,11 @@ public class CampServiceImpl implements CampService {
         }
 
         for (String type : campDto.getTypes()) {
+            if(type.equals("자동차야영장")){
+                type = "오토캠핑";
+            } else if (type.equals("일반야영장")) {
+                type = "일반캠핑장";
+            }
             campEntity.addType(type);
         }
 
@@ -200,6 +244,24 @@ public class CampServiceImpl implements CampService {
         }
 
         return facilities;
+    }
+    private List<ReviewDto> getReivewList(List<ReviewEntity> reviewEntityList){
+        List<ReviewDto> reviewList = new ArrayList<>();
+        for (ReviewEntity reviewEntity : reviewEntityList) {
+            UserEntity userEntity = reviewEntity.getUser();
+            ReviewDto reviewDto = ReviewDto.builder()
+                    .reviewNo(reviewEntity.getReviewNo())
+                    .title(reviewEntity.getTitle())
+                    .content(reviewEntity.getContent())
+                    .score(reviewEntity.getScore())
+                    .userNickname(userEntity.getNickname())
+                    .createDate(reviewEntity.getCreateDate())
+                    .userProfileImage(userEntity.getProfileImage())
+                    .build();
+
+            reviewList.add(reviewDto);
+        }
+        return reviewList;
     }
 
     private String checkNull(String str){

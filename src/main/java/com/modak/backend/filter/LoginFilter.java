@@ -1,19 +1,19 @@
 package com.modak.backend.filter;
 
-import com.modak.backend.dto.CustomUserDetails;
+import com.modak.backend.dto.jwt.CustomUserDetails;
 import com.modak.backend.provider.JWTProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -50,7 +50,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     //로그인 성공 시 수행할 작업
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-        //사용자의 아이디, 비밀번호, 역할을 갖는 CustomUserDetails 가져옴
+        //사용자의 아이디, 비밀번호, 역할, 닉네임을 갖는 CustomUserDetails 가져옴
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
         String userId = customUserDetails.getUsername();
 
@@ -60,16 +60,34 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         GrantedAuthority auth = iterator.next();
         String role = auth.getAuthority();
 
+        //닉네임 가져오기
+        String nickname = customUserDetails.getNickname();
+
         //토큰에 아이디, 역할만 담아서 생성
-        String token = jwtProvider.createJwt(userId, role, 60*60*10L);
+        //access : 10분, refresh : 1일
+        String access = jwtProvider.createJwt("access",userId, role, nickname,10*60*1000L);
+        String refresh = jwtProvider.createJwt("refresh",userId, role, nickname,24*60*60*1000L);
 
         //클라이언트 header 에 토큰 등록 (Bearer 토큰값)
-        response.addHeader("Authorization", "Bearer " + token);
+        response.addHeader("access", access);
+        response.addCookie(createCookie("refresh", refresh));
+        response.setStatus(HttpStatus.OK.value());
     }
 
     //로그인 실패 시
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    }
+    private Cookie createCookie(String key, String value) {
+        Cookie cookie = new Cookie(key, value);
+        cookie.setMaxAge(24*60*60);
+        //cookie.setSecure(true);
+        //보일 위치 - 전역
+        cookie.setPath("/");
+        //HttpOnly 를 해두면 프론트에서 js로 쿠키를 사용할 수 없음
+        cookie.setHttpOnly(true);
+
+        return cookie;
     }
 }

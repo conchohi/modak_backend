@@ -90,7 +90,7 @@ public class WeatherServiceImpl implements WeatherService {
                 .weather(weatherEntity.getWeather())
                 .lowTemp(weatherEntity.getLowTemp())
                 .highTemp(weatherEntity.getHighTemp())
-                .temp(weatherEntity.getHighTemp())
+                .temp(weatherEntity.getTemp())
                 .day(LocalDateUtil.getDayOfWeek(now))
                 .date(now)
                 .build();

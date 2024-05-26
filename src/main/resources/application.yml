@@ -11,7 +11,10 @@ spring:
             - db
             - secret
             - log
+            - oauth
 
 # 서버 설정
 server:
     port: 4040
+
+uploadPath : upload

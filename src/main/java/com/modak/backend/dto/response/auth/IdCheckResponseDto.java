@@ -1,4 +1,4 @@
-package com.modak.backend.dto.request.auth;
+package com.modak.backend.dto.response.auth;
 
 import com.modak.backend.common.ResponseCode;
 import com.modak.backend.common.ResponseMessage;

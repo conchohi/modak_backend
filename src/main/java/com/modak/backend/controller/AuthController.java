@@ -1,9 +1,14 @@
 package com.modak.backend.controller;
 
 import com.modak.backend.dto.UserDto;
+import com.modak.backend.dto.request.auth.CheckCertificationRequestDto;
+import com.modak.backend.dto.request.auth.EmailCertificationRequestDto;
+import com.modak.backend.dto.request.auth.FindIdRequestDto;
 import com.modak.backend.dto.request.auth.IdCheckRequestDto;
-import com.modak.backend.dto.request.auth.IdCheckResponseDto;
+import com.modak.backend.dto.response.auth.IdCheckResponseDto;
 import com.modak.backend.dto.response.ResponseDto;
+import com.modak.backend.dto.response.auth.CheckCertificationResponseDto;
+import com.modak.backend.dto.response.auth.EmailCertificationResponseDto;
 import com.modak.backend.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +39,25 @@ public class AuthController {
         return authService.join(userDto);
     }
 
+    @PostMapping("/email-certification")
+    public ResponseEntity<? super EmailCertificationResponseDto> emailCertificaton
+            (@RequestBody @Valid EmailCertificationRequestDto requestBody)
+    {ResponseEntity<? super EmailCertificationResponseDto> response = authService.emailCertification(requestBody);
+        return response;
+    }
+
+    @PostMapping("/check-certification")
+    public ResponseEntity<? super CheckCertificationResponseDto> checkCertification
+            (@RequestBody @Valid CheckCertificationRequestDto requestBody){
+        ResponseEntity<? super CheckCertificationResponseDto> response = authService.checkCertification(requestBody);
+        return response;
+    }
+
+    //아이디 찾기
+    @PostMapping("/findId-email-certification")
+    public ResponseEntity<?> sendCertificationEmail(@RequestBody EmailCertificationRequestDto request) {
+        return authService.findIdByEmail(request.getEmail());
+    }
 }
 
     

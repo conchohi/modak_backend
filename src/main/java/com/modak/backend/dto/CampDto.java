@@ -30,4 +30,8 @@ public class CampDto {
 
     @Builder.Default
     private List<String> facilities = new ArrayList<>();
+
+    @Builder.Default
+    private List<ReviewDto> reviewList = new ArrayList<>();
+
 }
