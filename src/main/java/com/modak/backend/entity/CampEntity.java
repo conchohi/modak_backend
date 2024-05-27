@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name="camp_tbl")
 public class CampEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long campNo;
 
     @Column(name = "camp_name", nullable = false)

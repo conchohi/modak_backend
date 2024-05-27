@@ -52,9 +52,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         //사용자의 아이디, 비밀번호, 역할, 닉네임을 갖는 CustomUserDetails 가져옴
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-        String userId = customUserDetails.getUsername();
+        String userId = authentication.getName();
 
-        //역할은 Collection 으로 저장되어있어 이렇게 가져옴
+        //역할은 Collection 으로 저장되어있음
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
         GrantedAuthority auth = iterator.next();
@@ -69,7 +69,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String refresh = jwtProvider.createJwt("refresh",userId, role, nickname,24*60*60*1000L);
 
         //클라이언트 header 에 토큰 등록 (Bearer 토큰값)
-        response.addHeader("access", access);
+        response.setHeader("access", access);
         response.addCookie(createCookie("refresh", refresh));
         response.setStatus(HttpStatus.OK.value());
     }
