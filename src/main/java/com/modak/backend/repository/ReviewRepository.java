@@ -14,7 +14,8 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 
     @Query("select r from ReviewEntity r " +
             "left join fetch r.camp " +
-            "left join fetch r.user ")
+            "left join fetch r.user " +
+            "order by r.reviewNo desc ")
     public Page<ReviewEntity> getAllList(Pageable pageable);
 
     @Query("select r from ReviewEntity r " +

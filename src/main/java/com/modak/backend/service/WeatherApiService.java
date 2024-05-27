@@ -35,6 +35,7 @@ public class WeatherApiService {
         locations = GeoLocation.getGeoList();
     }
 
+    //매일 30분에 1시간마다
     @Scheduled(cron = "0 30 0/1 * * *")
     public void registerCurrentWeatherByApi() {
         for (GeoLocation location : locations) {
