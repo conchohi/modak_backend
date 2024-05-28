@@ -51,9 +51,7 @@
 
 ## ⌨ 주요 기능 시연
 
-<div align="center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/48yzR_39_cI?si=RvZRAadUHrBemskR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+[![유튜브](https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA)](https://www.youtube.com/watch?v=48yzR_39_cI)
 
 ## 🏷 사용한 문서 도구
 백엔드 : [바로가기](https://github.com/conchohi/modak_backend) <br/>
