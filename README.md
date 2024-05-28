@@ -50,8 +50,8 @@ JAVA(jdk17) SpringBoot 3.2.5 SpringBoot Security 6.3.0 Oauth2 Client Spring Data
 
 
 ## 🏷 사용한 문서 도구
-#### 협업 도구 <br/>
-![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 프론트 : [바로가기](https://github.com/conchohi/modak_front) <br/>
-![notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white) [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c)<br/>
-![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) <br/> [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0)<br/>
-구글 드라이브 [바로가기](https://drive.google.com/drive/folders/1HEQZBS5Rmv1d3auvNwitzJXLWd1yvfnH)
+백엔드 : [바로가기](https://github.com/conchohi/modak_backend) <br/>
+프론트 : [바로가기](https://github.com/conchohi/modak_front) <br/>
+노션 : [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c)<br/>
+피그마 : [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0)<br/>
+구글 드라이브 : [바로가기](https://drive.google.com/drive/folders/1HEQZBS5Rmv1d3auvNwitzJXLWd1yvfnH)
