@@ -42,7 +42,7 @@
 </div>
 
 ## 📃 요구사항 정의서
-[바로가기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954){: target="_blank"}
+[바로가기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
 
 ## 📈 Flow Chart & WBS
 
@@ -51,11 +51,11 @@
 
 ## ⌨ 주요 기능 시연
 
-[![유튜브](https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA)](https://www.youtube.com/watch?v=48yzR_39_cI){: target="_blank"}
+<a target="_blank" href="https://www.youtube.com/watch?v=48yzR_39_cI"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
 
 ## 🏷 사용한 문서 도구
-백엔드 : [바로가기](https://github.com/conchohi/modak_backend){: target="_blank"} <br/>
-프론트 : [바로가기](https://github.com/conchohi/modak_front){: target="_blank"} <br/>
-노션 : [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c){: target="_blank"}<br/>
-피그마 : [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0){: target="_blank"}<br/>
-구글 드라이브 : [바로가기](https://drive.google.com/drive/folders/1HEQZBS5Rmv1d3auvNwitzJXLWd1yvfnH){: target="_blank"}
+백엔드 : [바로가기](https://github.com/conchohi/modak_backend)<br/>
+프론트 : [바로가기](https://github.com/conchohi/modak_front) <br/>
+노션 : [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c)<br/>
+피그마 : [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0)<br/>
+구글 드라이브 : [바로가기](https://drive.google.com/drive/folders/1HEQZBS5Rmv1d3auvNwitzJXLWd1yvfnH)
