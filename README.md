@@ -5,6 +5,7 @@
 
 # 🚩SpringBoot Project 
 🏕️ [MO_DAK] 날씨 정보 활용 캠핑장 추천 서비스
+![logo](https://github.com/conchohi/modak_backend/assets/156064008/77fd10fe-1a88-4dc7-be89-c0b11e7a9666)
 
 
 ## 📆개발기간
@@ -45,7 +46,11 @@
 ## 📃 요구사항 정의서
 [바로가기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
 
-## 📈 Flow Chart & WBS
+## 📈 개발 일정
+<img width="683" alt="개발일정" src="https://github.com/conchohi/modak_backend/assets/156064008/18ce3989-5fa7-4a77-ae49-8935a48ae270">
+
+## 💾 REST API 명세서 
+[바로가기] (https://spice-visitor-e5e.notion.site/82da260888fb414388655ac26d4eb2e1?v=a192dcef01ab4239900acf5a4d587699&pvs=4)
 
 ## 📚 ERD
 <img width="904" alt="ERD" src="https://github.com/conchohi/modak_backend/assets/156064008/4c655043-2785-45e7-b645-3ef162cdeb87">
@@ -53,6 +58,14 @@
 ## ⌨ 주요 기능 시연
 
 <a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
+
+## 🎨 추후 개선 사항
+1. 회원 탈퇴 기능 추가 <br/>
+2. 후기 및 즐겨찾기 페이징 처리 추가 구현<br/>
+3. 비밀번호 재설정 기능 추가<br/>
+4. CI/CD 기반 배포<br/>
+5. 시설 필터화 기능 추가 구현<br/>
+6. 리뷰 수정 상세페이지에서도 가능하도록 구현<br/>
 
 ## 🏷 사용한 문서 도구
 백엔드 : [바로가기](https://github.com/conchohi/modak_backend)<br/>
