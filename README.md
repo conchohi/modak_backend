@@ -38,8 +38,8 @@
 
 <h4> ⚙ 기타 ⚙ </h4>
 <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
-<h6>버전 정보 : JAVA( JDK 17.0 ) Apache Tomcat 10.1.20, SpringBoot 3.2.5 SpringBoot Security 6.3.0 Spring Data JPA 3.3.0 React 18.3.1 tailwindcss 3.4.3 node.js 18.20.2 axios 1.7.2
-</h6>
+<h6>버전 정보 : </h6>
+<h6> JAVA( JDK 17.0 ) Apache Tomcat 10.1.20, SpringBoot 3.2.5 SpringBoot Security 6.3.0 Spring Data JPA 3.3.0 React 18.3.1 tailwindcss 3.4.3 node.js 18.20.2 axios 1.7.2</h6>
 </div>
 
 ## 📃 요구사항 정의서
