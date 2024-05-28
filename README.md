@@ -33,7 +33,7 @@
 ![node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![tailwindcss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) <br/>
 React 18.3.1 / tailwindcss 3.4.3 / HTML / CSS / JavaScript / TypeScript / node.js 18.20.2 / axios 1.7.2 <br/>
 #### 백엔드 & DB <br/>
-![java] (https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) ![Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white) ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) ![Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white) ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 JAVA( JDK 17.0 ) / SpringBoot 3.2.5 / SpringBoot Security 6.3.0 / Oauth2 Client / Spring Data JPA 3.3.0 <br/>
 
 #### 기타 <br/>
@@ -51,7 +51,7 @@ JAVA( JDK 17.0 ) / SpringBoot 3.2.5 / SpringBoot Security 6.3.0 / Oauth2 Client 
 
 ## 🏷 사용한 문서 도구
 #### 협업 도구 <br/>
-![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 프론트 : [바로가기](https://github.com/conchohi/modak_front)
-![notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white) [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c)
-![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) <br/> [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0)
+![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 프론트 : [바로가기](https://github.com/conchohi/modak_front) <br/>
+![notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white) [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c)<br/>
+![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) <br/> [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0)<br/>
 구글 드라이브 [바로가기](https://drive.google.com/drive/folders/1HEQZBS5Rmv1d3auvNwitzJXLWd1yvfnH)
