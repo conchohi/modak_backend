@@ -50,7 +50,7 @@
 <img width="683" alt="개발일정" src="https://github.com/conchohi/modak_backend/assets/156064008/18ce3989-5fa7-4a77-ae49-8935a48ae270">
 
 ## 💾 REST API 명세서 
-[바로가기] (https://spice-visitor-e5e.notion.site/82da260888fb414388655ac26d4eb2e1?v=a192dcef01ab4239900acf5a4d587699&pvs=4)
+[API 명세서](https://spice-visitor-e5e.notion.site/82da260888fb414388655ac26d4eb2e1?v=a192dcef01ab4239900acf5a4d587699&pvs=4)
 
 ## 📚 ERD
 <img width="904" alt="ERD" src="https://github.com/conchohi/modak_backend/assets/156064008/4c655043-2785-45e7-b645-3ef162cdeb87">
