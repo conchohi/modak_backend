@@ -31,10 +31,10 @@
 #### 프론트 <br/>
 ![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white) ![ts](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) <br/>
 ![node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![tailwindcss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) <br/>
-React 18.3.1 / tailwindcss 3.4.3 / HTML / CSS / JavaScript / TypeScript / node.js 18.20.2 / axios 1.7.2 <br/>
+React 18.3.1 tailwindcss 3.4.3 HTML5 CSS3 JavaScript TypeScrip node.js 18.20.2 axios 1.7.2 <br/>
 #### 백엔드 & DB <br/>
-![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) ![Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white) ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-JAVA( JDK 17.0 ) / SpringBoot 3.2.5 / SpringBoot Security 6.3.0 / Oauth2 Client / Spring Data JPA 3.3.0 <br/>
+![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) ![Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white) ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white) <br/>
+JAVA(jdk17) SpringBoot 3.2.5 SpringBoot Security 6.3.0 Oauth2 Client Spring Data JPA 3.3.0 MySQL 8.0.27 <br/>
 
 #### 기타 <br/>
 ![postman](	https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
