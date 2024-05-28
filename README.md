@@ -5,15 +5,15 @@
 
 # 🚩SpringBoot Project 
 ![logo](https://github.com/conchohi/modak_backend/assets/156064008/77fd10fe-1a88-4dc7-be89-c0b11e7a9666) <br/>
-🏕️ [MO_DAK] 날씨 정보 활용 캠핑장 추천 서비스
+🏕️ [MO_DAK] 날씨 및 지역 기반 캠핑장 추천 서비스
 
 
 ## 📆개발기간
 2024.4.19~2024.5.26
 
 ## 👀프로젝트 소개
-캠핑의 수요가 늘어남에 따라 캠핑에 대한 정보를 원하는 사용자도 덩달아 늘어남 <br/>
-이에 따라 날씨API를 활용해 캠핑장을 추천하는 [MO_DAK] 서비스를 제공함 <br/><br/>
+코로나 19 팬데믹 현상이 축소되면서 야외 활동과 여행이 증가하며 캠핑의 수요가 늘어났다. 이와 더불어 개별 여행의 선호도가 증가하며 다양한 정보를 얻기 위한 SNS 활동이 활발해졌다. 이에 따라 날씨 API와 캠핑장 API를 활용한 필터화로 캠핑장을 추천하고 타인과의 정보를 공유할 수 있는 공간을 구현한 <br/>
+[MO_DAK] 서비스를 제공함 <br/><br/>
 **1. 캠핑장 이용자의 경험을 반영한 다양한 후기 제공.<br/>
 2. 다양한 각도에서 캠핑 관련 정보를 쉽게 찾을 수 있는 플랫폼 제공.<br/>
 3. 공공 API 데이터(예: 날씨 정보)를 활용한 날씨에 따른 맞춤 캠핑지 추천.**
@@ -40,11 +40,17 @@
 <h4> ⚙ 기타 ⚙ </h4>
 <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
 <h6>버전 정보 : </h6>
-<h6> JAVA( JDK 17.0 ) Apache Tomcat 10.1.20, SpringBoot 3.2.5 SpringBoot Security 6.3.0 Spring Data JPA 3.3.0 React 18.3.1 tailwindcss 3.4.3 node.js 18.20.2 axios 1.7.2</h6>
+<h6> JAVA( JDK 17.0 )<br/> Apache Tomcat 10.1.20 <br/>
+  SpringBoot 3.2.5 <br/> SpringBoot Security 6.3.0 <br/> Spring Data JPA 3.3.0  <br/> React 18.3.1 <br/>  tailwindcss 3.4.3 <br/> node.js 18.20.2  <br/>axios 1.7.2</h6>
 </div>
 
 ## 📃 요구사항 정의서
-[바로가기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
+
+[자세히 보기</div>
+
+## 📃 요구사항 정의서
+
+[자세히 보기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
 
 ## 📈 개발 일정
 <img width="683" alt="개발일정" src="https://github.com/conchohi/modak_backend/assets/156064008/18ce3989-5fa7-4a77-ae49-8935a48ae270">
@@ -56,16 +62,22 @@
 <img width="904" alt="ERD" src="https://github.com/conchohi/modak_backend/assets/156064008/4c655043-2785-45e7-b645-3ef162cdeb87">
 
 ## ⌨ 주요 기능 시연
-
+<h3>YouTube 시연 영상</h3>
+<h4>https://youtu.be/48yzR_39_cI?feature=shared</h4>
 <a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
 
 ## 🎨 추후 개선 사항
 1. 회원 탈퇴 기능 추가 <br/>
+&nbsp; -> 즐겨찾기, 리뷰 외래키 제약 조건을 고려하여 기능 구현 필요. <br/><br/>
 2. 후기 및 즐겨찾기 페이징 처리 추가 구현<br/>
+&nbsp; -> 사용자의 편의성을 증가시키기 위함. 페이징 처리 대신 '최상단으로 이동하기 버튼 구현으로 대체 가능'<br/><br/>
 3. 비밀번호 재설정 기능 추가<br/>
-4. CI/CD 기반 배포<br/>
-5. 시설 필터화 기능 추가 구현<br/>
-6. 리뷰 수정 상세페이지에서도 가능하도록 구현<br/>
+&nbsp; -> 비밀번호를 잊은 사용자를 위한 기능으로 초반에 고려한 '이메일로 비밀번호 인증번호 전송하고 일부 알려주기' 대신 비밀번호 자체 재설정 기능으로 구현 필요.<br/><br/>
+5. CI/CD 기반 배포<br/><br/>
+6. 시설 필터화 기능 추가 구현<br/>
+&nbsp; -> 편의시설, 서비스 등 다양한 조건 활용하기.<br/><br/>
+7. 리뷰 수정 상세페이지에서도 가능하도록 구현<br/>
+&nbsp; -> 현재는 마이페이지에서만 수정 가능. 타인의 계정과 현재 사용자의 계정을 구분할 수 있는 코드 추가로 상세페이지 자체에서 리뷰 수정을 가능토록 추가 구현 필요. <br/>
 
 ## 📩 개인별 후기
 |이름 |후기|
