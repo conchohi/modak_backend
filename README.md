@@ -51,7 +51,7 @@
 
 ## ⌨ 주요 기능 시연
 
-<a target="_blank" href="https://www.youtube.com/watch?v=48yzR_39_cI"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
+<a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
 
 ## 🏷 사용한 문서 도구
 백엔드 : [바로가기](https://github.com/conchohi/modak_backend)<br/>
