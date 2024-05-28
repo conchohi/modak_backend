@@ -29,24 +29,29 @@
 
 ## 🖥 기술 스택
 #### 프론트 <br/>
-<img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/css3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javscript&logoColor=white"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/TailWindCss-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white"/>
-<img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/>
-<br/><br/>
+![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white) ![ts](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) <br/>
+![node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![tailwindcss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) <br/>
+React 18.3.1 / tailwindcss 3.4.3 / HTML / CSS / JavaScript / TypeScript / node.js 18.20.2 / axios 1.7.2 <br/>
 #### 백엔드 & DB <br/>
-<img src="https://img.shields.io/badge/springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/>
-<img src="https://img.shields.io/badge/springsecurity-6DB33F?style=flat-square&logo=springsecurity&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
+![java] (https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) ![Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white) ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+JAVA( JDK 17.0 ) / SpringBoot 3.2.5 / SpringBoot Security 6.3.0 / Oauth2 Client / Spring Data JPA 3.3.0 <br/>
 
+#### 기타 <br/>
+![postman](	https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
-
+## 📃 요구사항 정의서
+[바로가기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
 ## 📈 Flow Chart & WBS
+
+## 📚 ERD
+<img width="904" alt="ERD" src="https://github.com/conchohi/modak_backend/assets/156064008/4c655043-2785-45e7-b645-3ef162cdeb87">
 
 ## ⌨ 주요 기능 시연
 
+
 ## 🏷 사용한 문서 도구
+#### 협업 도구 <br/>
+![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 프론트 : [바로가기](https://github.com/conchohi/modak_front)
+![notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white) [바로가기](https://miniature-zinc-da3.notion.site/1-bc3939ba19d84b92950ac1291ca4d51c)
+![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) <br/> [바로가기](https://www.figma.com/design/69DakzYeLHETbyEsGp1rvo/1%EC%B0%A8-%EA%B8%B0%EC%97%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?t=Yqpkr3QsBFqa5Qx8-0)
+구글 드라이브 [바로가기](https://drive.google.com/drive/folders/1HEQZBS5Rmv1d3auvNwitzJXLWd1yvfnH)
