@@ -46,10 +46,6 @@
 
 ## 📃 요구사항 정의서
 
-[자세히 보기</div>
-
-## 📃 요구사항 정의서
-
 [자세히 보기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
 
 ## 📈 개발 일정
