@@ -4,7 +4,7 @@
 
 
 # 🚩SpringBoot Project 
-![logo](https://github.com/conchohi/modak_backend/assets/156064008/77fd10fe-1a88-4dc7-be89-c0b11e7a9666)
+![logo](https://github.com/conchohi/modak_backend/assets/156064008/77fd10fe-1a88-4dc7-be89-c0b11e7a9666) <br/>
 🏕️ [MO_DAK] 날씨 정보 활용 캠핑장 추천 서비스
 
 
