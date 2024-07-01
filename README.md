@@ -12,11 +12,15 @@
 2024.4.19~2024.5.26
 
 ## 👀프로젝트 소개
-코로나 19 팬데믹 현상이 축소되면서 야외 활동과 여행이 증가하며 캠핑의 수요가 늘어났다. 이와 더불어 개별 여행의 선호도가 증가하며 다양한 정보를 얻기 위한 SNS 활동이 활발해졌다. 이에 따라 날씨 API와 캠핑장 API를 활용한 필터화로 캠핑장을 추천하고 타인과의 정보를 공유할 수 있는 공간을 구현한 <br/>
-[MO_DAK] 서비스를 제공함 <br/><br/>
-**1. 캠핑장 이용자의 경험을 반영한 다양한 후기 제공.<br/>
-2. 다양한 각도에서 캠핑 관련 정보를 쉽게 찾을 수 있는 플랫폼 제공.<br/>
-3. 공공 API 데이터(예: 날씨 정보)를 활용한 날씨에 따른 맞춤 캠핑지 추천.**
+코로나 19 팬데믹 현상이 축소되면서 야외 활동과 여행이 증가하며 캠핑의 수요가 늘어났다. <br/>
+이와 더불어 개별 여행의 선호도가 증가하며 다양한 정보를 얻기 위한 SNS 활동이 활발해졌다.<br/>
+이에 따라 날씨 API와 캠핑장 API를 활용한 필터화로 캠핑장을 추천하고 타인과의 정보를 공유할 수 있는 공간을 구현한 <br/>
+**[MO_DAK] 서비스를 제공함** <br/><br/>
+
+
+##### 1. 캠핑장 이용자의 경험을 반영한 다양한 후기 제공.<br/>
+##### 2. 다양한 각도에서 캠핑 관련 정보를 쉽게 찾을 수 있는 플랫폼 제공.<br/>
+##### 3. 공공 API 데이터(예: 날씨 정보)를 활용한 날씨에 따른 맞춤 캠핑지 추천.
 
 
 ## 👥팀명/팀원 소개
@@ -48,6 +52,38 @@
 
 [자세히 보기](https://docs.google.com/spreadsheets/d/1ZJ1U0nlnIto1heOHKlIkDKd8F0rapEHRdtkqLLsWZ-8/edit#gid=193885954)
 
+#### 1. `캠핑장`
+- 전체 캠핑장 목록을 **조회**할 수 있어야 한다.
+- 캠핑장 목록 조회 시 **페이징 처리, 검색, 카테고리별 조회**가 가능해야 한다.
+- 특정 캠핑장을 **상세 조회**할 수 있어야 한다
+- 사용자는 캠핑장을 **좋아요**할 수 있다.
+- 캠핑장 정보는 **주기적으로 업데이트**되어야 한다.
+- 
+#### 2. `날씨`
+- 지역별, 캠핑장 근처 날씨를 **확인**할 수 있어야 한다.
+- 오늘의 날씨는 **1시간 단위로 업데이트**되어야 한다.
+- 2주간 날씨 예측은 **매일 업데이트**되어야 한다.
+- 지도를 통해 시각적으로 날씨를 **확인**할 수 있어야 한다.
+  
+#### 3. `사용자`
+- 사용자는 **회원가입, 로그인**을 해야 한다.
+- 사용자는 마이페이지를 통해 자신의 정보를 **조회**할 수 있어야 한다.
+- 사용자는 닉네임, 프로필, 비밀번호 등을 **수정**할 수 있어야 한다.
+
+#### 4. `회원가입`
+- 회원가입 시 아이디, 닉네임, 비밀번호, 이메일을 통해 가입한다.
+- 회원가입 시 **이메일 인증**이 필수이다.
+
+#### 5. `로그인`
+- 로그인 시 **토큰 기반 인증 방식**을 사용하여 무상태를 유지한다.
+- jwt 토큰은 **access, refresh** 두 종류를 사용한다.
+- 카카오, 네이버 등 소셜 로그인을 지원한다. 
+
+#### 6. `후기`
+- 사용자는 캠핑장에 대한 후기를 **작성, 수정, 삭제**할 수 있다.
+- 타인이 남긴 캠핑장 후기를 **조회**할 수 있어야 한다.
+
+  
 ## 📈 개발 일정
 <img width="683" alt="개발일정" src="https://github.com/conchohi/modak_backend/assets/156064008/18ce3989-5fa7-4a77-ae49-8935a48ae270">
 
@@ -60,7 +96,13 @@
 ## ⌨ 주요 기능 시연
 <h3>YouTube 시연 영상</h3>
 <h4>https://youtu.be/48yzR_39_cI?feature=shared</h4>
-<a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
+<a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img width="429" alt="logo" src="https://github.com/conchohi/modak_front/assets/156064008/c556b809-30e3-4f49-96ba-1fb62de77532">
+</a>
+
+<h3>발표 자료</h3>
+<a href="https://www.canva.com/design/DAGFvzUHaxY/KeJx6AEfqk7MH2kHC_Zfjg/edit?utm_content=DAGFvzUHaxY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
+<img width="805" alt="발표자료" src="https://github.com/conchohi/modak_front/assets/156064008/0da397a4-21d6-4abd-96dd-3bd48d239346">
+</a>
 
 ## 🎨 추후 개선 사항
 1. 회원 탈퇴 기능 추가 <br/>
