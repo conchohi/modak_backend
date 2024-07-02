@@ -132,6 +132,53 @@
 <img width="805" alt="발표자료" src="https://github.com/conchohi/modak_front/assets/156064008/0da397a4-21d6-4abd-96dd-3bd48d239346">
 </a>
 
+### 페이지 구현
+
+
+<details><summary>메인 페이지 
+</summary>
+<img width="1129" alt="메인" src="https://github.com/conchohi/modak_backend/assets/156064008/c1e732bc-6a01-4fa4-bbbb-41a14938eebb">
+<img width="225" alt="메인6" src="https://github.com/conchohi/modak_backend/assets/156064008/2e57724f-3da8-4b13-8504-488f1cf98f4e">
+<img width="398" alt="메인4" src="https://github.com/conchohi/modak_backend/assets/156064008/e681d836-167c-455d-b96b-1f8f074441b3">
+</details>
+
+
+
+<details><summary>
+로그인, 회원가입
+</summary>
+<img width="441" alt="로그인" src="https://github.com/conchohi/modak_backend/assets/156064008/33c053f5-f778-4afc-9bae-b4cb45c16073">
+<img width="911" alt="회원가입" src="https://github.com/conchohi/modak_backend/assets/156064008/b7a78a44-1581-4ff8-83bc-a79b122a175e">
+</details>
+
+
+
+<details><summary>캠핑장 상세
+</summary>
+
+
+<img width="752" alt="상세1" src="https://github.com/conchohi/modak_backend/assets/156064008/ef8fe594-0ffb-4d41-bc73-e71200d60883">
+<img width="726" alt="상세2" src="https://github.com/conchohi/modak_backend/assets/156064008/fa6247c2-e123-4d76-a1d3-12b3af2ff125">
+<img width="737" alt="상세3" src="https://github.com/conchohi/modak_backend/assets/156064008/f278cfa6-3fc2-4db2-b3da-a40dc90e9568">
+</details>
+
+
+<details><summary>캠핑장 후기
+</summary>
+<img width="1058" alt="캠핑장 리뷰" src="https://github.com/conchohi/modak_backend/assets/156064008/96760278-b36e-463e-8704-bfb743dfabcd">
+</details>
+
+
+
+<details><summary>마이페이지
+</summary>
+<img width="1161" alt="마이페이지1" src="https://github.com/conchohi/modak_backend/assets/156064008/77ef7201-f3ae-410f-a5e5-e79c987b530a">
+<img width="993" alt="마이페이지2" src="https://github.com/conchohi/modak_backend/assets/156064008/717b43a0-2c90-4d71-9aba-4596d4699bdd">
+</details>
+
+
+
+
 ---
 
 ## 🎨 추후 개선 사항
